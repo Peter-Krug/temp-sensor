@@ -19,14 +19,16 @@ Built to demonstrate software architecture principles: modular design, requireme
 ## Project Structure
 
 ```
-Temperatur_sensor/
-├── main.cpp        # Entry point, main measurement loop
-├── sensor.h        # Public interface: readTemperature()
-├── sensor.cpp      # Sensor simulation (rand-based)
-├── alarm.h         # Public interface: checkTemperature()
-├── alarm.cpp       # Threshold check and console output
-├── utils.h         # Public interface: printStats()
-├── utils.cpp       # Statistical evaluation (Min/Max/Avg)
+temp-sensor/
+├── src/
+│   ├── main.cpp        # Entry point, main measurement loop
+│   ├── sensor.cpp      # Sensor simulation (rand-based)
+│   ├── alarm.cpp       # Threshold check and console output
+│   └── utils.cpp       # Statistical evaluation (Min/Max/Avg)
+├── include/
+│   ├── sensor.h        # Public interface: readTemperature()
+│   ├── alarm.h         # Public interface: checkTemperature()
+│   └── utils.h         # Public interface: printStats()
 └── README.md
 ```
 
@@ -54,8 +56,8 @@ Each module has a single, clearly defined responsibility (Separation of Concerns
 **Requirements:** GCC / G++ (MinGW-w64 on Windows, GCC on Linux/macOS)
 
 ```bash
-# Compile all modules
-g++ main.cpp sensor.cpp alarm.cpp utils.cpp -o sensor.exe
+# Compile all modules (from the root folder temp-sensor/)
+g++ src/main.cpp src/sensor.cpp src/alarm.cpp src/utils.cpp -Iinclude -o sensor.exe
 
 # Run
 ./sensor.exe
